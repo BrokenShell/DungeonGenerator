@@ -22,9 +22,7 @@ class Background:
     def __str__(self):
         output = (
             f"{self.name}, {self.feature}",
-            # f"Trait: {self.trait}",
             f"Ideal: {self.ideal}",
-            # f"Bond: {self.bond}",
             f"Flaw: {self.flaw}",
         )
         return "\n".join(output)

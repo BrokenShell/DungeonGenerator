@@ -90,7 +90,7 @@ class Loot:
                 output.append(itm)
         if len(output) == 0:
             output = ['Empty']
-        return ", ".join(output) if len(output) > 1 else output[0]
+        return '\n  ' + "\n  ".join(output) if len(output) > 1 else output[0]
 
     def set_loot(self, loot_data):
         loot = cumulative_weighted_choice(loot_data)

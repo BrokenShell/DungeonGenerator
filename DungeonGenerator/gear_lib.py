@@ -22,8 +22,9 @@ basic_gear = FlexCat({
     ),
     "Costume": (
         lambda: f"{fabric()} Lingerie",
-        "Fancy Costume",  "Nun Costume", "Animal Costume", "Monster Costume",  "Maid Costume",
-        "Vampire Costume", "Beholder Costume", "Ninja Costume", "Pirate Costume", "Royal Knight Costume",
+        "Fancy Costume",  "Nun Costume", "Animal Costume", "Monster Costume",
+        "Maid Costume", "Vampire Costume", "Beholder Costume", "Ninja Costume",
+        "Pirate Costume", "Royal Knight Costume",
     ),
     "Clothing": (
         lambda: f"{fabric()} Robes",
@@ -33,9 +34,9 @@ basic_gear = FlexCat({
         lambda: f"{fabric()} Pants",
         lambda: f"{fabric()} Boots",
         lambda: f"{fabric()} Overcoat",
-        "Noble Garb", "Royal Robes", "Villager Garb", "Rag Shirt", "Ball Gown", "Highborn Garb",
-        "Kilt", "Apron, Boots, Gloves and Goggles", "Crude Hide", "Leather Chaps", "Royal Garb",
-        "Fancy Dress", "Peasant Garb",
+        "Noble Garb", "Royal Robes", "Villager Garb", "Rag Shirt", "Ball Gown",
+        "Highborn Garb", "Kilt", "Apron, Boots, Gloves and Goggles", "Crude Hide",
+        "Leather Chaps", "Royal Garb", "Fancy Dress", "Peasant Garb",
     ),
     "Light Armor": (
         "Padded Gambeson", "Leather Jerkin", "Bone Splint Tunic", "Studded Doublet",
@@ -44,16 +45,16 @@ basic_gear = FlexCat({
         "Chain Mail Shirt", "Ring Mail Tunic", "Scale Mail Suit", "Brigandine",
     ),
     "Heavy Armor": (
-        "Plate Mail:\n    Breastplate, Gambeson",
-        "Quarter Plate:\n    Breastplate, Gambeson, Gauntlets, Sabatons",
-        "Half Plate:\n    Breastplate, Gambeson, Visor Helm"
-        "\n    Pauldrons, Gauntlets, Sabatons",
-        "Field Plate:\n    Breastplate, Gambeson, Visor Helm"
-        "\n    Gorget, Pauldrons, Vambraces, "
-        "\n    Gauntlets, Cuisses Leggings, Sabatons",
+        "Plate Mail Suit: Breastplate & Gambeson",
+        "Quarter Plate Suit: Breastplate, Gambeson, Gauntlets & Sabatons",
+        "Half Plate Suit: Breastplate, Gambeson, Visor Helm, Pauldrons, "
+        "Gauntlets & Sabatons",
+        "Field Plate Suit: Breastplate, Gambeson, Visor Helm, Gorget, "
+        "Pauldrons, Vambraces, Gauntlets, Cuisses Leggings & Sabatons",
     ),
     "Shield": (
-        "Tower Shield", "Kite Shield", "Jousting Shield", "Heater Shield", "Round Shield", "Buckler",
+        "Tower Shield", "Kite Shield", "Jousting Shield", "Heater Shield",
+        "Round Shield", "Buckler",
     ),
     "Ammunition": (
         lambda: f"Quiver of {d(3) * 10} Arrows",

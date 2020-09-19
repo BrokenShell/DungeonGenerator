@@ -36,16 +36,14 @@ class Apprentice(Base):
         "Acolyte",
         "Scribe",
         "Squire",
-        "Footman",
         "Cultist",
         "Neophyte",
-        "Hierophant",
     ))
 
     def __init__(self):
         self.save_prof = {self.fav_stat, self.random_ability()}
         self.sub_class = self.random_sub_class()
-        self.name = f"{self.sub_class}"
+        self.name = f"Apprentice, {self.sub_class}"
         self.damage_type = f"{damage_types('Physical')}"
         self.pref_weapon = villager_weapons()
 
@@ -233,10 +231,9 @@ class Knight(Base):
     max_ac_dex = 0
     random_sub_class = TruffleShuffle((
         "Flaming Tongue",
-        "Frozen Waste",
-        "Drunken Monkey",
+        "Frozen Wasteland",
         "Hidden Rose",
-        "Thunderbolts",
+        "Storm",
         "Physical Shadow",
         "Broken Lance",
     ))
@@ -506,9 +503,12 @@ class Player:
         "Tiefling": {"CHA": 2, 'INT': 1},
     }
 
-    def __init__(self, cls, level=1, race=None, point_buy=False):
-        self.cls = cls()
-        self.level = smart_clamp(level, 1, 20)
+    def __init__(self, cls=None, level=0, race=None, point_buy=False):
+        if not cls:
+            self.cls = random_character_class()() if level > 0 else Apprentice()
+        else:
+            self.cls = cls() if level > 0 else Apprentice()
+        self.level = smart_clamp(level, 0, 20)
         self.race = self.random_race() if not race else race
         self.health = 0
         self.xp = 0
@@ -542,9 +542,14 @@ class Player:
         self.special_damage_type = self.cls.damage_type
         self.loot = get_loot(self.level)
         self.treasures = set()
-        for _ in range(smart_clamp(self.level - 5, 1, 10)):
-            if percent_true(50):
-                self.treasures.add("  " + magic_table_by_cr(self.level))
+        if self.level > 0:
+            for _ in range(smart_clamp(self.level - 5, 1, 10)):
+                if percent_true(1):
+                    self.treasures.add(magic_table_by_cr(self.level + 10))
+                elif percent_true(50):
+                    self.treasures.add(magic_table_by_cr(self.level))
+                elif len(self.treasures) < 1:
+                    self.treasures.add(magic_table_by_cr(self.level - 10))
 
     def find_dam_type(self):
         dam_type = damage_types()
@@ -582,16 +587,18 @@ class Player:
 
     @property
     def ability_scores(self):
-        return ", ".join(f"{key} {val} ({self.stat_mod_str[key]})" for key, val in self.stats.items())
+        return "\n".join(f"  {key} {val} ({self.stat_mod_str[key]})" for key, val in self.stats.items())
 
     def __repr__(self):
+        n_items = len(self.treasures)
+        gear = '\n  ' + f"\n  ".join(self.treasures) if n_items > 1 else list(self.treasures)[0] if n_items == 1 else 'None'
         output = (
             f"{self.cls.name}",
             f"Level: {self.level}",
             f"Total XP: {self.xp}",
             f"Race: {self.race}",
             f"Background: {self.background}",
-            f"{self.ability_scores}",
+            f"Abilities:\n" + self.ability_scores,
             f"Proficiency Bonus: {self.prof_bonus_str}",
             f"Hit Points: {self.health}",
             f"Armor Class: {self.ac}",
@@ -602,8 +609,7 @@ class Player:
             f"Save Proficiencies: {', '.join(self.saves)}",
             f"Save Modifiers: {', '.join(self.saving_throws)}",
             f"Inventory: {self.loot}",
-            f"Equipment:",
-            f"\n".join(self.treasures),
+            f"Equipment: {gear}",
             "",
         )
         return '\n'.join(output)
@@ -663,7 +669,7 @@ class Player:
             0, 300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000, 85000,
             100000, 120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000, 400000, 800000
         )
-        if self.level == 1:
+        if self.level <= 1:
             self.xp = xp_by_level[0]
         else:
             self.xp = random_range(xp_by_level[self.level - 1], xp_by_level[self.level])
@@ -771,5 +777,8 @@ class Party:
 
 if __name__ == '__main__':
     print()
-    pc_party = Party(level=10)
-    print(pc_party)
+    for lev in (0, 5, 10, 15, 20):
+        print(f"\nParty Level: {lev}")
+        print(f"---------------\n")
+        pc_party = Party(lev)
+        print(pc_party)

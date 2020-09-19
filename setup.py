@@ -10,7 +10,7 @@ setup(
     author_email="webmaster@sharpdesigndigital.com",
     install_requires=["Fortuna"],
     packages=["DungeonGenerator"],
-    version="0.1.10",
+    version="0.2.0",
     description="D&D 5e Dungeon Generator",
     long_description=long_description,
     long_description_content_type="text/markdown",

@@ -4,7 +4,7 @@ from Fortuna import MultiChoice
 
 get_archetype = MultiChoice(
     "\nChoose an archetype:",
-    options=("Caster", "Melee", "Ranged", "Healer"),
+    options=("Apprentice", "Caster", "Melee", "Ranged", "Healer"),
     strict=True,
 )
 get_caster = MultiChoice(
@@ -14,7 +14,7 @@ get_caster = MultiChoice(
 )
 get_melee = MultiChoice(
     "\nWhat type of melee?",
-    options=("Fighter", "Barbarian", "Rogue", "Monk", "Paladin", "Bard"),
+    options=("Fighter", "Barbarian", "Knight", "Rogue", "Monk", "Paladin", "Bard"),
     strict=True,
 )
 get_ranged = MultiChoice(
@@ -29,6 +29,7 @@ get_healer = MultiChoice(
 )
 
 class_hierarchy = {
+    "Apprentice": lambda: "Apprentice",
     "Caster": get_caster,
     "Melee": get_melee,
     "Ranged": get_ranged,
@@ -73,12 +74,14 @@ class PickNumber:
             return self()
 
 
-if __name__ == "__main__":
+def make_character():
     my_race = get_race()
     get_class = class_hierarchy[get_archetype()]
     my_class = get_class()
-    get_level = PickNumber("Choose a level", range(1, 21))
-    level = get_level()
-    print(f'\n{my_race}, Level {level} {my_class}\n')
-    p = Player(eval(my_class), race=my_race, level=level)
-    print(p)
+    get_level = PickNumber("\nChoose a level", range(1, 21))
+    level = get_level() if my_class != 'Apprentice' else 1
+    return Player(eval(my_class), race=my_race, level=level)
+
+
+if __name__ == '__main__':
+    print(f"\n{make_character()}")

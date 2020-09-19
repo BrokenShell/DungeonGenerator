@@ -1,4 +1,6 @@
 from Fortuna import *
+
+from DungeonGenerator.backgrounds import random_background
 from DungeonGenerator.cr import CR
 from DungeonGenerator.utilities import damage_types, cr_str
 from DungeonGenerator.treasure import Loot, get_loot, magic_table_f, magic_table_g, magic_table_h, magic_table_i, no_coin
@@ -69,15 +71,15 @@ class Monster:
 
     @property
     def ability_scores(self):
-        return ", ".join(f"{key} {val} ({self.stat_mod_str[key]})" for key, val in self.stats.items())
+        return "\n".join(f"  {key} {val} ({self.stat_mod_str[key]})" for key, val in self.stats.items())
 
     def __lt__(self, other):
         return self.cr_val < other.cr
 
-    def __repr__(self):
+    def __str__(self):
         self.output = (
             f"Monster: {self.name}, CR {cr_str(self.cr_val)}",
-            f"{self.ability_scores}",
+            f"Abilities:\n{self.ability_scores}",
             f"Hit Points: {self.total_hp}",
             f"Armor Class: {self.ac}",
             f"Attack Bonus: {self.att_bonus}",
@@ -195,11 +197,11 @@ class MonsterGroup(Monster):
             self.individual_dam = f"{self.damage_dice}"
         self.at_will_dam = f"{smart_clamp(self.cr_val // 4, 1, 5)}d6 + {self.prof_bonus} {self.dam_type}"
 
-    def __repr__(self):
+    def __str__(self):
         self.output = (
             f"Monster Group: {self.name}, CR {cr_str(self.cr_val)}",
             f"Number Appearing: {self.num_appearing}",
-            f"{self.ability_scores}",
+            f"Abilities:\n{self.ability_scores}",
             f"Hit Points: {self.individual_hp} each",
             f"Armor Class: {self.ac}",
             f"Attack Bonus: {self.att_bonus}",
@@ -251,11 +253,11 @@ class MinionGroup(Monster):
             self.individual_dam = f"{self.damage_dice}"
         self.at_will_dam = f"{smart_clamp(self.cr_val // 5, 1, 5)}d4 + {self.prof_bonus} {self.dam_type}"
 
-    def __repr__(self):
+    def __str__(self):
         self.output = (
             f"Minion Group: {self.name}, CR {cr_str(self.cr_val)}",
             f"Number Appearing: {self.num_appearing}",
-            f"{self.ability_scores}",
+            f"Abilities:\n{self.ability_scores}",
             f"Hit Points: {self.individual_hp} each",
             f"Armor Class: {self.ac}",
             f"Attack Bonus: {self.att_bonus}",
@@ -284,10 +286,9 @@ class ItemEncounter(Monster):
         self.treasure = Loot()
         self.treasure.magic_items.append(f"Sentient {self.item_name}")
 
-    def __repr__(self):
+    def __str__(self):
         self.output = (
             f"Animated Item: {self.item_name}, CR {cr_str(self.cr_val)}",
-            # f"{self.ability_scores}",
             f"Hit Points: {self.total_hp}",
             f"Armor Class: {self.ac}",
             f"Attack Bonus: {self.att_bonus}",
@@ -353,6 +354,7 @@ class Villain(Monster):
         super().__init__(cr, room_name, name)
         self.name = random_monster("villain") if not name else name
         self.dam_type = self.find_dam_type()
+        self.background = random_background()
         self.treasure = get_loot(self.cr_val, monster_name=self.name, room_name=room_name, is_villain=True)
         self.special = self.special_abilities()
         self.weakness = self.special_weaknesses()
@@ -367,11 +369,12 @@ class Villain(Monster):
         self.set_stat_mods()
         self.special_damage = f"{self.damage} {damage_types()}"
 
-    def __repr__(self):
+    def __str__(self):
         self.output = (
             f"Villain: {self.name}, CR {cr_str(self.cr_val)}",
             f"Motivation: {self.motive}",
-            f"{self.ability_scores}",
+            f"Background: {self.background}",
+            f"Abilities:\n{self.ability_scores}",
             f"Proficiency Bonus: {self.prof_bonus}",
             f"Hit Points: {self.total_hp}",
             f"Armor Class: {self.ac}",
@@ -417,10 +420,10 @@ class Boss(Villain):
     def num_potions(self):
         return str(self.treasure).count("Potion")
 
-    def __repr__(self):
+    def __str__(self):
         self.output = (
             f"Boss: {self.name}, CR {cr_str(self.cr_val)}",
-            f"{self.ability_scores}",
+            f"Abilities:\n{self.ability_scores}",
             f"Hit Points: {self.total_hp}",
             f"Armor Class: {self.ac}",
             f"Attack Bonus: {self.att_bonus}",
@@ -428,7 +431,7 @@ class Boss(Villain):
             f"Basic Attack: {self.at_will_dam}",
             f"Special Attack: {self.special_damage}",
             f"Special Ability: {self.special}",
-            "Legendary Actions. The boss may use one basic attack or move action at the end of every opponent's turn.",
+            f"Legendary Action. The boss may use one basic attack or move action at the end of every opponent's turn.",
             f"Save DC: {self.save_dc}",
             f"XP Value: {self.xp}",
             f"Treasure: {self.treasure}",
@@ -445,10 +448,10 @@ class CampaignBoss(Boss):
         while (len(self.treasure) - self.num_potions()) < self.tier:
             self.treasure += no_coin(get_loot(cr, monster_name=self.name, room_name="Lair", is_villain=True))
 
-    def __repr__(self):
+    def __str__(self):
         self.output = (
             f"Campaign Boss: {self.name}, CR {cr_str(self.cr_val)}",
-            f"{self.ability_scores}",
+            f"Abilities:\n{self.ability_scores}",
             f"Hit Points: {self.total_hp}",
             f"Armor Class: {self.ac}",
             f"Attack Bonus: {self.att_bonus}",
@@ -456,7 +459,7 @@ class CampaignBoss(Boss):
             f"Basic Attack: {self.at_will_dam}",
             f"Special Attack: {self.special_damage}",
             f"Special Ability: {self.special}",
-            "Legendary Actions. The boss may use one basic attack or move action at the end of every opponent's turn.",
+            f"Legendary Action. The boss may use one basic attack or move action at the end of every opponent's turn.",
             f"Save DC: {self.save_dc}",
             f"XP Value: {self.xp}",
             f"Treasure: {self.treasure}",
@@ -467,5 +470,8 @@ class CampaignBoss(Boss):
 
 if __name__ == "__main__":
     print()
-    # print(CampaignBoss(9, name="Black Blade Baron"))
-    print(ItemEncounter(10))
+    print(MinionGroup(5))
+    print(Monster(7))
+    print(Villain(13))
+    print(Boss(17))
+    print(CampaignBoss(20))

@@ -103,7 +103,7 @@ class Npc:
 
     @property
     def ability_scores(self):
-        return ", ".join(f"{key} {val} ({self.stat_mod_str[key]})" for key, val in self.stats.items())
+        return "\n".join(f"  {key} {val} ({self.stat_mod_str[key]})" for key, val in self.stats.items())
 
     def __str__(self):
         self.output = (
@@ -111,10 +111,10 @@ class Npc:
             f"Race: {self.race}",
             f"Appearance: {self.appearance}",
             f"Mannerism: {self.mannerism}",
-            f"{self.ability_scores}",
+            f"Ideal: {self.background.ideal}",
+            f"Flaw: {self.background.flaw}",
             f"Hit Points: {self.health}",
             f"Armor Class: {self.ac}",
-            f"Background: {self.background}",
             ""
         )
         return "\n".join(self.output)
@@ -153,14 +153,14 @@ class QuestGiver(Npc):
 
     def __str__(self):
         self.output = (
-            f"NPC: Secondary Quest Giver",
+            f"NPC: Quest Giver",
             f"Race: {self.race}",
             f"Appearance: {self.appearance}",
             f"Mannerism: {self.mannerism}",
-            f"Background: {self.background}",
+            f"Ideal: {self.background.ideal}",
             f"Quest: {self.quest}",
             f"Required PC Skill: {self.skill} {self.save_dc}",
-            f"Quest Rewards: (the party should choose one below)",
+            f"Quest Rewards: (choose one below)",
             f"1. Mysterious magic item: {self.magic_item}",
             f"2. Fat bag of coins: {self.coinage}",
             f"3. Gem encrusted treasure chest: {self.chest}",
@@ -195,6 +195,8 @@ class ShopKeeper(Npc):
             f"NPC: {self.profession}",
             f"Race: {self.race}",
             f"Appearance: {self.appearance}",
+            f"Mannerism: {self.mannerism}",
+            f"Bond: {self.background.bond}",
             f"Inspect Merchandise INT: DC {self.save_dc}",
             f"For Sale:",
             "\n".join(self.for_sale_names),
@@ -214,7 +216,10 @@ class PotionDealer(Npc):
         self.output = (
             f"NPC: {self.profession}",
             f"Race: {self.race}",
+            f"Appearance: {self.appearance}",
             f"Mannerism: {self.mannerism}",
+            f"Bond: {self.background.bond}",
+            f"Inspect Merchandise INT: DC {self.save_dc}",
             f"For Sale:",
             "\n".join(self.for_sale),
             ""
@@ -224,19 +229,13 @@ class PotionDealer(Npc):
 
 class Mercenary(Npc):
     pc_classes = CumulativeWeightedChoice((
-        (0, Knight),
-        (0, Paladin),
-        (0, Druid),
-        (0, Monk),
         (20, Fighter),
         (40, Cleric),
         (60, Rogue),
         (70, Bard),
         (80, Ranger),
         (90, Barbarian),
-        (95, Wizard),
-        (97, Sorcerer),
-        (99, Warlock),
+        (100, Wizard),
     ), flat=False)
 
     def __init__(self, cr, race=None, pc_class=None):
@@ -309,7 +308,8 @@ class Mercenary(Npc):
             f"Level: {self.player.level}",
             f"Race: {self.race}",
             f"Appearance: {self.appearance}",
-            f"{self.player.ability_scores}",
+            f"Background: {self.background}",
+            f"Abilities:\n{self.player.ability_scores}",
             f"Proficiency Bonus: {self.player.prof_bonus_str}",
             f"Preferred Weapon: {self.player.cls.pref_weapon}",
             f"Hit Points: {self.player.health}",
@@ -322,7 +322,6 @@ class Mercenary(Npc):
             f"Save Modifiers: {', '.join(self.player.saving_throws)}",
             f"Skills: {self.skills}",
             f"Talent: {self.talent}",
-            f"Background: {self.background}",
             f"Inventory: {self.inventory}",
             ""
         )
@@ -331,6 +330,16 @@ class Mercenary(Npc):
 
 class Adventurer(Mercenary):
     goals = TruffleShuffle(npc_dict['quests'])
+    pc_classes = CumulativeWeightedChoice((
+        (30, Knight),
+        (40, Paladin),
+        (50, Druid),
+        (60, Monk),
+        (80, Ranger),
+        (90, Barbarian),
+        (95, Sorcerer),
+        (100, Warlock),
+    ), flat=False)
 
     def __init__(self, cr, race=None, pc_class=None):
         pcc = random_character_class() if not pc_class else pc_class
@@ -344,7 +353,8 @@ class Adventurer(Mercenary):
             f"Level: {self.player.level}",
             f"Race: {self.race}",
             f"Appearance: {self.appearance}",
-            f"{self.player.ability_scores}",
+            f"Background: {self.background}",
+            f"Abilities:\n{self.player.ability_scores}",
             f"Proficiency Bonus: {self.player.prof_bonus_str}",
             f"Preferred Weapon: {self.player.cls.pref_weapon}",
             f"Hit Points: {self.player.health}",
@@ -358,7 +368,6 @@ class Adventurer(Mercenary):
             f"Skills: {self.skills}",
             f"Talent: {self.talent}",
             f"Personal Goal: {self.goal}",
-            f"Background: {self.background}",
             f"Inventory: {self.inventory}",
             ""
         )
@@ -381,7 +390,8 @@ class VillainNPC(Adventurer):
             f"Race: {self.race}",
             f"Appearance: {self.appearance}",
             f"Mannerism: {self.mannerism}",
-            f"{self.player.ability_scores}",
+            f"Background: {self.background}",
+            f"Abilities:\n{self.player.ability_scores}",
             f"Proficiency Bonus: {self.player.prof_bonus_str}",
             f"Preferred Weapon: {self.player.cls.pref_weapon}",
             f"Hit Points: {self.player.health}",
@@ -394,7 +404,6 @@ class VillainNPC(Adventurer):
             f"Save Modifiers: {', '.join(self.player.saving_throws)}",
             f"Skills: {self.skills}",
             f"Talent: {self.talent}",
-            f"Background: {self.background}",
             f"XP Value: {self.xp}",
             f"Inventory: {self.treasure}",
             ""
@@ -406,30 +415,60 @@ class Farmer(Npc):
     professions = TruffleShuffle(npc_dict['farm_professions'])
 
 
-random_weighted_npc = RelativeWeightedChoice((
-    (2, Npc),
-    (1, Farmer),
-    (1, ShopKeeper),
-    (1, PotionDealer),
-    (2, QuestGiver),
-    (1, Mercenary),
-    (1, Adventurer),
+city_npc = RelativeWeightedChoice((
+    (10, Npc),
+    (7, Farmer),
+    (5, Mercenary),
+    (4, QuestGiver),
+    (3, PotionDealer),
+    (2, ShopKeeper),
     (1, VillainNPC),
 ))
 
 
 def random_city_npc(cr=1, room_name="Any"):
     _ = room_name
-    return random_weighted_npc(cr)
+    return city_npc(cr)
+
+
+dungeon_npc = RelativeWeightedChoice((
+    (10, Npc),
+    (5, PotionDealer),
+    (2, ShopKeeper),
+    (1, Adventurer),
+))
 
 
 def random_dungeon_npc(cr=1, room_name="Any"):
-    if any(x in room_name.lower() for x in ("Barracks", "Training Room", "Armory")) or percent_true(25):
-        return Adventurer(cr)
-    else:
-        return Npc(cr)
+    _ = room_name
+    return dungeon_npc(cr)
 
+
+random_npc = RelativeWeightedChoice((
+    (6, Npc),
+    (5, Farmer),
+    (4, Mercenary),
+    (3, QuestGiver),
+    (2, PotionDealer),
+    (2, ShopKeeper),
+    (1, VillainNPC),
+    (1, Adventurer),
+))
 
 if __name__ == "__main__":
-    print()
-    print(PotionDealer(d(10)))
+    print("""
+A Random Collection of 1000 NPCs
+
+""")
+    print("Tier 1 (level 1 - 5)")
+    for _ in range(250):
+        print(random_npc(distribution_range(front_linear, 1, 5)))
+    print("Tier 2 (level 6 - 10)")
+    for _ in range(250):
+        print(random_npc(distribution_range(front_linear, 6, 10)))
+    print("Tier 3 (level 11 - 16)")
+    for _ in range(250):
+        print(random_npc(distribution_range(front_linear, 11, 16)))
+    print("Tier 4 (level 17 - 20)")
+    for _ in range(250):
+        print(random_npc(distribution_range(front_linear, 17, 20)))
