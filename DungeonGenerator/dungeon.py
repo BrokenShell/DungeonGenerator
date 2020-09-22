@@ -1,9 +1,12 @@
 from Fortuna import *
+
+from DungeonGenerator.cr import CR
 from DungeonGenerator.monsters import CampaignBoss
-from DungeonGenerator.treasure import Loot
 from DungeonGenerator.npc import random_city_npc
-from DungeonGenerator.room_lib import MinionRoom, BossRoom, VillainRoom, Room, \
-    WildArea
+from DungeonGenerator.player_lib import Party
+from DungeonGenerator.room_lib import MinionRoom, VillainRoom, BossRoom
+from DungeonGenerator.room_lib import Room, WildArea
+from DungeonGenerator.treasure import Loot
 
 
 class Area:
@@ -12,7 +15,7 @@ class Area:
     def __getitem__(self, item):
         return self.rooms[item]
 
-    def __repr__(self):
+    def __str__(self):
         return "\n".join(self.rooms)
 
 
@@ -24,46 +27,54 @@ random_cond = TruffleShuffle((
     "Infested",
     "Blighted",
     "Shadow",
+    "Ruined",
 ))
 
-random_post_cond = TruffleShuffle((
-    "Lost Soul",
-    "Forgotten",
-    "Mad Wizard",
-    "Dark Mist",
-    "Blood Queen",
-    "Evil Genius",
+random_dungeon_place = TruffleShuffle((
+    "River",
+    "Mountain",
+    "Forest",
+    "Lake",
+    "Creek",
+    "Swamp",
+    "Valley",
 ))
 
 random_dungeon_env = TruffleShuffle((
-    "Mine",
-    "Crypt",
     "Tower",
-    "Sewers",
     "Palace",
     "Castle",
     "Mansion",
     "Labyrinth",
-    "Prison",
     "Manor",
-    "Lair",
-    "Undercity",
+))
+
+random_post_cond = TruffleShuffle((
+    "Lost Souls",
+    "Forgotten",
+    "Mad Wizards",
+    "Misty Graves",
+    "Blood Queen",
+    "Bone Doctor",
+    "Demon Spawn",
+    "Lich King",
+    "Baron Gratuitous",
 ))
 
 
 class Dungeon(Area):
     random_name = TruffleShuffle((
-        lambda: f"{rand_color()} {random_dungeon_env()}",
-        lambda: f"{random_cond()} {random_dungeon_env()}",
+        lambda: f"{rand_color()} {random_dungeon_place()} {random_dungeon_env()}",
+        lambda: f"The {random_cond()} {random_dungeon_env()}",
         lambda: f"{random_dungeon_env()} of the {random_post_cond()}",
-        lambda: f"{random_cond()} {random_dungeon_env()} of the {random_post_cond()}",
+        lambda: f"The {random_cond()} {random_dungeon_env()} of the {random_post_cond()}",
     ))
 
     def __init__(self, cr, dungeon_name=None, dungeon_levels=1,
                  rooms_per_level=10, make_traps=True):
         self.rooms = []
         self.rooms_per_level = rooms_per_level
-        self.cr = smart_clamp(cr, -3, 30)
+        self.cr = CR(cr)
         self.name = dungeon_name if dungeon_name else f"{self.random_name()}"
         self.total_xp = 0
         self.dungeon_levels = dungeon_levels
@@ -79,20 +90,18 @@ class Dungeon(Area):
         self.threats = [first_room]
         my_room = Room()
         for dun_level in range(dungeon_levels):
-            if dun_level + 1 in (5, 10, 15, 20):
-                self.cr = smart_clamp(self.cr + 1, -3, 30)
             for _ in range(self.rooms_per_level):
                 room_number += 1
                 if room_number == self.total_rooms:
-                    my_room = BossRoom(dun_level + self.cr + 2, "Dungeon Heart")
+                    my_room = BossRoom(dun_level + self.cr.value + 2, "Dungeon Heart")
                     self.boss_cr = my_room.threat.cr
                 elif room_number < self.total_rooms:
                     if room_number % self.rooms_per_level == 0:
-                        my_room = VillainRoom(dun_level + self.cr + 1)
+                        my_room = VillainRoom(dun_level + self.cr.value + 1)
                     elif room_number % self.rooms_per_level == 1:
-                        my_room = MinionRoom(dun_level + self.cr)
+                        my_room = MinionRoom(dun_level + self.cr.value)
                     elif room_number < self.total_rooms:
-                        my_room = Room(dun_level + self.cr, make_traps=make_traps)
+                        my_room = Room(dun_level + self.cr.value, make_traps=False)
                 else:
                     break
                 self.rooms.append(f'Room {room_number}, {my_room}')
@@ -114,6 +123,9 @@ class Dungeon(Area):
             "\n",
         )
         return "\n".join(output)
+
+    def __repr__(self):
+        return f"Dungeon: {self.name}, {self.cr}"
 
     def print_room(self, room_number):
         print(self.rooms[room_number-1])
@@ -171,7 +183,7 @@ random_wild = TruffleShuffle((
 
 class Wilderness:
     random_name = TruffleShuffle((
-        lambda: f"{rand_color()} {random_wild()}",
+        lambda: f"The {rand_color()} {random_wild()}",
         lambda: f"Redwood {random_wild()}",
         lambda: f"Cavalier {random_wild()}",
         lambda: f"Frozen {random_wild()}",
@@ -180,7 +192,7 @@ class Wilderness:
         lambda: f"Forgotten {random_wild()}",
         lambda: f"Stormy {random_wild()}",
         lambda: f"Raven {random_wild()}",
-        lambda: f"Twin {random_wild()}",
+        lambda: f"Twin Fork {random_wild()}",
         lambda: f"Twisted {random_wild()}",
         lambda: f"{random_wild()} of the Maelstrom",
         lambda: f"Titan {random_wild()}",
@@ -192,7 +204,7 @@ class Wilderness:
     ))
 
     def __init__(self, cr, name=None, num_levels=1, areas_per_level=10):
-        self.cr = smart_clamp(cr - 1, -3, 30)
+        self.cr = CR(cr)
         self.name = name if name else f"{self.random_name()}"
         self.total_xp = 0
         rooms_per_level = areas_per_level
@@ -204,7 +216,7 @@ class Wilderness:
 
         for dun_level in range(num_levels):
             for _ in range(rooms_per_level):
-                my_room = WildArea(dun_level + self.cr, self.name)
+                my_room = WildArea(dun_level + self.cr.value, self.name)
                 self.rooms.append(f"Area {room_number}, {self.name}\n{my_room}")
                 self.threats.append(my_room)
                 if my_room.xp:
@@ -218,7 +230,7 @@ class Wilderness:
                 total += room.threat.treasure
         return total
 
-    def __repr__(self):
+    def __str__(self):
         output = (
             f"Wilderness: {self.name}\n",
             "\n".join(self.rooms),
@@ -226,12 +238,15 @@ class Wilderness:
         )
         return "\n".join(output)
 
+    def __repr__(self):
+        return f"Wilderness: {self.name}, {self.cr}"
+
 
 random_civ = TruffleShuffle((
-    "Orchard",
-    "Farm",
+    "Orchards",
+    "Farms",
     "Ranch",
-    "Traveling Market",
+    "Traveling Caravan",
     "Fairgrounds",
     "Outpost",
     "Hamlet",
@@ -433,13 +448,13 @@ class Settlement:
     ))
 
     def __init__(self, cr, name=None, num_people=10):
-        self.cr = smart_clamp(cr - 1, -3, 30)
+        self.cr = CR(cr)
         self.num_people = num_people
         self.name = name if name else f"{self.random_name()}"
         self.rooms = []
         self.threats = []
         for room_num in range(1, self.num_people + 1):
-            this_room = random_city_npc(self.cr)
+            this_room = random_city_npc(self.cr.value)
             self.rooms.append(
                 f"Area {room_num}, {self.name.split(', ')[0]}\n{this_room}")
             self.threats.append(this_room)
@@ -460,6 +475,9 @@ class Settlement:
         )
         return "\n".join(output)
 
+    def __repr__(self):
+        return f"Settlement: {self.name}, {self.cr}"
+
 
 class AdventureSet:
 
@@ -467,7 +485,7 @@ class AdventureSet:
         self.areas = areas
 
     def summary(self):
-        return '\n'.join(f"{area.name}, CR {area.cr}" for area in self.areas)
+        return '\n'.join(f"{repr(area)}" for area in self.areas)
 
     def __str__(self):
         return ''.join(str(area) for area in self.areas)
@@ -486,6 +504,7 @@ def make_clichea():
         Wilderness(4, "The Great Plain"),
         Wilderness(4, "Massive Wall"),
         Wilderness(5, "The Breach"),
+
         Wilderness(6, "Badlands"),
         Wilderness(7, "Land's End"),
         Wilderness(8, "World Scar"),
@@ -493,8 +512,9 @@ def make_clichea():
         Wilderness(9, "Bandit Camp"),
         Wilderness(9, "The Reach"),
         Wilderness(10, "Dragon Tail Islands"),
-        Dungeon(11, "Dragon's Lair"),
         Wilderness(11, "Frozen North Wastes"),
+        Dungeon(11, "Dragon's Lair"),
+
         Settlement(11, "Azgard"),
         Wilderness(12, "Mt. Kazzakrad"),
         Wilderness(13, "Mountains of Mist"),
@@ -505,6 +525,7 @@ def make_clichea():
         Wilderness(15, "The Pass"),
         Wilderness(16, "Elvenhome"),
         Settlement(16, "Yggdraseal"),
+
         Settlement(17, "Lithdinlor"),
         Wilderness(17, "Star Lake"),
         Dungeon(18, "The Stones of Prophecy"),
@@ -519,20 +540,23 @@ def make_clichea():
     return clichea
 
 
+def make_campaign(starting_level=1):
+    adventure = AdventureSet(
+        Wilderness(starting_level),
+        Settlement(starting_level+1),
+        Wilderness(starting_level+1),
+        Dungeon(starting_level+2),
+        Wilderness(starting_level+3),
+        CampaignBoss(starting_level+4),
+    )
+    return adventure
+
+
 if __name__ == "__main__":
-    print()
-    # adventure = AdventureSet(
-    #     Settlement(0, "Pissbottom Village"),
-    #     Wilderness(1, "Ever Wood Glade"),
-    #     Dungeon(2, "Obsidian Deep Mines"),
-    #     Settlement(2, "Moonville"),
-    #     Wilderness(3, "Gray Moore Swamp"),
-    #     Dungeon(4, "The Sunken Temple"),
-    #     Settlement(4, "Sunny Vale"),
-    #     Wilderness(5, "Mount Climax"),
-    #     Dungeon(6, "Halls of Mystery"),
-    #     CampaignBoss(7, "Damien"),
-    # )
-    # print(adventure)
-    d = Dungeon(3, dungeon_levels=10)
-    d.print_room(1)
+    print("\nPre-rolled party:\n")
+    print(Party())
+    campaign = make_campaign()
+    print("\nCampaign\n")
+    print(campaign)
+    print("\nCampaign Summary\n")
+    print(campaign.summary())

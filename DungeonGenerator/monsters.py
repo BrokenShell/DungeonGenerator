@@ -450,7 +450,7 @@ class CampaignBoss(Boss):
 
     def __str__(self):
         self.output = (
-            f"Campaign Boss: {self.name}, CR {cr_str(self.cr_val)}",
+            f"Campaign Boss: {self.name}, {self.cr.string}",
             f"Abilities:\n{self.ability_scores}",
             f"Hit Points: {self.total_hp}",
             f"Armor Class: {self.ac}",
@@ -466,6 +466,9 @@ class CampaignBoss(Boss):
             ""
         )
         return '\n'.join(self.output)
+
+    def __repr__(self):
+        return f"Campaign Boss: {self.name}, {self.cr}"
 
 
 if __name__ == "__main__":
