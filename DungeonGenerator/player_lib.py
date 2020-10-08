@@ -714,17 +714,17 @@ random_dps = FlexCat({
 
 class Party:
 
-    def __init__(self, level=1, strat="default", race=None):
+    def __init__(self, level=1, strategy="default", race=None):
         self.level = level
         self.party_list = []
         self.race = race
-        if strat == "party_1":
+        if strategy == "party_1":
             self.party_1()
-        elif strat == "gold":
+        elif strategy == "gold":
             self.gold_party(gold_level=10)
-        elif strat == "silver":
+        elif strategy == "silver":
             self.gold_party(gold_level=5)
-        elif strat == "apprentice":
+        elif strategy == "apprentice":
             self.apprentice()
         else:
             self.default_party()
@@ -777,8 +777,8 @@ class Party:
 
 if __name__ == '__main__':
     print()
-    for lev in (0, 5, 10, 15, 20):
+    for lev in (0, 1, 5, 10, 15, 20):
         print(f"\nParty Level: {lev}")
         print(f"---------------\n")
-        pc_party = Party(lev)
+        pc_party = Party(lev, strategy='gold')
         print(pc_party)

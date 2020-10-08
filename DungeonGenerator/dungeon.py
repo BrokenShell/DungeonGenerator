@@ -542,11 +542,9 @@ def make_clichea():
 
 def make_campaign(starting_level=1):
     adventure = AdventureSet(
+        Settlement(starting_level),
         Wilderness(starting_level),
-        Settlement(starting_level+1),
-        Wilderness(starting_level+1),
-        Dungeon(starting_level+2),
-        Wilderness(starting_level+3),
+        Dungeon(starting_level+1),
         CampaignBoss(starting_level+4),
     )
     return adventure
