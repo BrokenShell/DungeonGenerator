@@ -1,0 +1,639 @@
+The Divine Sun Soul: Campaign Summary
+
+Settlement: Monastery of the Divine Sun Soul, CR 1
+Wilderness: Stormy Cavern, CR 1
+Dungeon: Manor of the Misty Graves, CR 2
+Campaign Boss: The Nameless One, CR 5
+
+The Divine Sun Soul Campaign Setting
+
+Settlement: Monastery of the Divine Sun Soul
+
+Area 1, Monastery of the Divine Sun Soul
+NPC: Quest Giver
+Race: Human: Peasant
+Appearance: Missing fingers
+Mannerism: Prone to singing
+Ideal: Charity. I steal from the wealthy so that I can help people in need.
+Quest: Remove a powerful curse
+Required PC Skill: Persuasion CHA 13
+Quest Rewards: (choose one below)
+1. Mysterious magic item: Ring of the ram
+2. Fat bag of coins:
+  1000 Copper Coins
+  10 Electrum Coins
+3. Gem encrusted treasure chest:
+  2200 Copper Coins
+  1200 Silver Coins
+  50 Gold Coins
+  5 Platinum Coins
+  Gems 80 GP
+
+Area 2, Monastery of the Divine Sun Soul
+NPC: Glassblower
+Race: Wood Elf
+Appearance: Tattoos
+Mannerism: High-pitched screechy voice
+Ideal: Creativity. I never run the same con twice.
+Flaw: I can't resist swindling people who are more powerful than me.
+Hit Points: 6
+Armor Class: 10
+
+Area 3, Monastery of the Divine Sun Soul
+NPC: Trapper
+Race: Human: Peasant
+Appearance: Distinctive nose
+Mannerism: Chews something
+Ideal: Might. If I become strong, I can take what I want—-what I deserve.
+Flaw: The tyrant who rules my land will stop at nothing to see me killed.
+Hit Points: 6
+Armor Class: 10
+
+Area 4, Monastery of the Divine Sun Soul
+NPC: Mercenary
+Salary: 7 Copper
+Class: Ranger, Beast Master
+Level: 1
+Race: Human: Peasant
+Appearance: Formal, clean clothes
+Background: Outlander, Trapper
+Ideal: Honor. If I dishonor myself, I dishonor my whole clan.
+Flaw: I am slow to trust members of other races, tribes, and societies.
+Abilities:
+  STR 13 (+1)
+  DEX 12 (+1)
+  CON 9 (-1)
+  INT 14 (+2)
+  WIS 12 (+1)
+  CHA 7 (-2)
+Proficiency Bonus: 2
+Preferred Weapon: Matched pair of Broken Bottles
+Hit Points: 7
+Armor Class: 13
+Attack Bonus: 3
+Attack Damage: 1d10 + 1 hacking
+Special Attack: 1d6 + 8 piercing
+Save DC: 11
+Save Proficiencies: DEX, WIS
+Save Modifiers: STR +1, DEX +3, CON -1, INT +2, WIS +3, CHA -2
+Skills: Investigation INT 4, Athletics STR 3, Survival WIS 3
+Talent: Skilled actor and master of disguise
+Inventory: Warhammer +1
+
+Area 5, Monastery of the Divine Sun Soul
+NPC: Shop Keeper
+Race: Rock Gnome
+Appearance: Unusual eye color
+Mannerism: Taps fingers
+Bond: Those who fight beside me are those worth dying for.
+Inspect Merchandise INT: DC 13
+For Sale:
+  Costume, Price: 119 Copper (Beholder Costume, poor quality)
+  Martial Melee Weapon, Price: 98 Copper (Shortsword, poor quality)
+  Shield, Price: 88 Copper (Tower Shield, poor quality)
+  Heavy Armor, Price: 146 Copper (Quarter Plate Suit: Breastplate, Gambeson, Gauntlets & Sabatons, exceptional quality)
+  Martial Ranged Weapon, Price: 134 Copper (Heavy Crossbow, exceptional quality)
+  Costume, Price: 139 Copper (Pirate Costume, exceptional quality)
+  Medium Armor, Price: 108 Copper (Chain Mail Shirt, exceptional quality)
+  Clothing, Price: 105 Copper (Leather Chaps, poor quality)
+  Trinket: a crystal knob from a door, Price 345 Silver
+
+Area 6, Monastery of the Divine Sun Soul
+NPC: Prostitute
+Race: Human: Peasant
+Appearance: Ragged, dirty clothes
+Mannerism: Fidgets
+Ideal: Aspiration. I'm going to prove that I'm worthy of a better life.
+Flaw: I will never fully trust anyone other than myself.
+Hit Points: 3
+Armor Class: 7
+
+Area 7, Monastery of the Divine Sun Soul
+NPC: Shop Keeper
+Race: Human: Peasant
+Appearance: Missing teeth
+Mannerism: Uses unnecessarily long words
+Bond: Someone stole my precious instrument, and someday I'll get it back.
+Inspect Merchandise INT: DC 13
+For Sale:
+  Shield, Price: 58 Copper (Jousting Shield, poor quality)
+  Light Armor, Price: 115 Copper (Studded Doublet, poor quality)
+  Simple Melee Weapon, Price: 134 Copper (Mace, poor quality)
+  Simple Ranged Weapon, Price: 61 Copper (Sling, exceptional quality)
+  Costume, Price: 145 Copper (Monster Costume, exceptional quality)
+  Trinket: an indecipherable treasure map, Price 252 Silver
+
+Area 8, Monastery of the Divine Sun Soul
+NPC: Mercenary
+Salary: 21 Copper
+Class: Ranger, Hunter
+Level: 1
+Race: Human: Peasant
+Appearance: Piercings
+Background: Acolyte, Shelter of the Faithful
+Ideal: Faith. I trust that my deity will guide my actions, I have faith that if I work hard, things will go well.
+Flaw: My piety sometimes leads me to blindly trust those that profess faith in my god.
+Abilities:
+  STR 5 (-3)
+  DEX 16 (+3)
+  CON 16 (+3)
+  INT 12 (+1)
+  WIS 11 (0)
+  CHA 16 (+3)
+Proficiency Bonus: 2
+Preferred Weapon: Mace and Hammer
+Hit Points: 11
+Armor Class: 15
+Attack Bonus: 5
+Attack Damage: 1d10 + 3 bludgeoning
+Special Attack: 1d6 + 8 piercing
+Save DC: 13
+Save Proficiencies: DEX, WIS
+Save Modifiers: STR -3, DEX +5, CON +3, INT +1, WIS +2, CHA +3
+Skills: Religion INT 3, Insight WIS 2, Nature INT 3
+Talent: Great at games
+Inventory: Sending stones
+
+Area 9, Monastery of the Divine Sun Soul
+NPC: Quest Giver
+Race: Human: Peasant
+Appearance: Distinctive posture
+Mannerism: Prone to humming quietly
+Ideal: Nature. The natural world is more important than all the constructs of civilization.
+Quest: Give safe passage
+Required PC Skill: Arcana INT 13
+Quest Rewards: (choose one below)
+1. Mysterious magic item: Deck of many things
+2. Fat bag of coins:
+  90 Electrum Coins
+  50 Gold Coins
+3. Gem encrusted treasure chest:
+  2420 Copper Coins
+  1700 Silver Coins
+  60 Gold Coins
+  Jewels 125 GP
+  Potion of fire breath
+
+Area 10, Monastery of the Divine Sun Soul
+NPC: Potion Dealer
+Race: Hill Dwarf
+Appearance: Birthmark
+Mannerism: Twirls hair or tugs beard
+Bond: My honor is my life.
+Inspect Merchandise INT: DC 13
+For Sale:
+  Potion of animal friendship, Price: 229 Silver
+  Potion of climbing, Price: 353 Silver
+  Potion of diminution, Price: 333 Silver
+  Potion of growth, Price: 263 Silver
+  Potion of hill giant strength, Price: 334 Silver
+  Potion of poison, Price: 349 Silver
+  Potion of water breathing, Price: 329 Silver
+
+Wilderness: Stormy Cavern
+
+Area 1, Stormy Cavern
+Monster Group: Rust Monster, CR 1
+Number Appearing: 2
+Abilities:
+  STR 10 (0)
+  DEX 10 (0)
+  INT 15 (+2)
+  WIS 13 (+1)
+  CHA 13 (+1)
+  CON 15 (+2)
+Hit Points: 39 each
+Armor Class: 14
+Attack Bonus: 2
+Attack Damage: 2x (1d6 + 2 bludgeoning)
+Save DC: 13
+XP Value: 200
+Treasure:
+  15 Copper Coins
+  4 Platinum Coins
+
+Area 2, Stormy Cavern
+Minor Trap, CR 1: Swinging Hammer
+Spot & Disarm DC 10
+Save vs. CON DC 11 for half damage.
+Damage: 2d4 bludgeoning
+Disarm XP: 200
+
+Area 3, Stormy Cavern
+NPC: Mercenary
+Salary: 12 Copper
+Class: Rogue, Mastermind
+Level: 1
+Race: Human: Peasant
+Appearance: Tattoos
+Background: Noble, Position of Privilege
+Ideal: Respect. Respect is due to me because of my position, but all people regardless of station deserve to be treated with dignity.
+Flaw: In fact, the world does revolve around me.
+Abilities:
+  STR 9 (-1)
+  DEX 17 (+3)
+  CON 15 (+2)
+  INT 16 (+3)
+  WIS 9 (-1)
+  CHA 10 (0)
+Proficiency Bonus: 2
+Preferred Weapon: Matched pair of Blackjacks
+Hit Points: 10
+Armor Class: 15
+Attack Bonus: 5
+Attack Damage: 1d10 + 3 shadow
+Special Attack: 1d6 + 8 crushing
+Save DC: 13
+Save Proficiencies: DEX, INT
+Save Modifiers: STR -1, DEX +5, CON +2, INT +5, WIS -1, CHA 0
+Skills: Persuasion CHA 2, Sleight of Hand DEX 5, History INT 5, Endurance CON 4
+Talent: Unbelievably lucky
+Inventory: Cloak of protection
+
+Area 4, Stormy Cavern
+Minion Group: Tasmanian Devil, CR 1/8
+Number Appearing: 3
+Abilities:
+  STR 14 (+2)
+  DEX 16 (+3)
+  INT 11 (0)
+  WIS 14 (+2)
+  CHA 14 (+2)
+  CON 17 (+3)
+Hit Points: 11 each
+Armor Class: 12
+Attack Bonus: 2
+Attack Damage: 3x (1d4 + 2 unholy)
+Save DC: 13
+XP Value: 25
+
+Area 5, Stormy Cavern
+NPC: Scribe
+Race: Human: Peasant
+Appearance: Distinctive nose
+Mannerism: Makes constant jokes or puns
+Ideal: Fairness. We all do the work, so we all share in the rewards.
+Flaw: I follow orders, even if I think they're wrong.
+Hit Points: 7
+Armor Class: 7
+
+Area 6, Stormy Cavern
+Minion Group: Gelatinous Spores, CR 1/8
+Number Appearing: 3
+Abilities:
+  STR 14 (+2)
+  DEX 17 (+3)
+  INT 15 (+2)
+  WIS 18 (+4)
+  CHA 15 (+2)
+  CON 11 (0)
+Hit Points: 7 each
+Armor Class: 12
+Attack Bonus: 2
+Attack Damage: 3x (1d4 + 2 radiant)
+Save DC: 13
+XP Value: 25
+
+Area 7, Stormy Cavern
+Minion Group: Crawling Claw, CR 1/8
+Number Appearing: 4
+Abilities:
+  STR 16 (+3)
+  DEX 15 (+2)
+  INT 16 (+3)
+  WIS 16 (+3)
+  CHA 18 (+4)
+  CON 15 (+2)
+Hit Points: 7 each
+Armor Class: 10
+Attack Bonus: 4
+Attack Damage: 4x (1d4 + 2 crushing)
+Save DC: 13
+XP Value: 25
+
+Area 8, Stormy Cavern
+Monster: Cave Troll, CR 1
+Abilities:
+  STR 3 (-4)
+  DEX 10 (0)
+  INT 8 (-1)
+  WIS 8 (-1)
+  CHA 18 (+4)
+  CON 12 (+1)
+Hit Points: 82
+Armor Class: 10
+Attack Bonus: 6
+Basic Attack: 1d6 + 2 hacking
+Save DC: 13
+XP Value: 200
+Treasure: 9 Gold Coins
+
+Area 9, Stormy Cavern
+NPC: Quest Giver
+Race: Human: Villager
+Appearance: Distinctive jewelry
+Mannerism: Paces
+Ideal: People. I'm loyal to my friends, not to any ideals, and everyone else can take a trip down the Styx for all I care.
+Quest: Recover a legendary artifact
+Required PC Skill: Performance CHA 13
+Quest Rewards: (choose one below)
+1. Mysterious magic item: Halberd +2
+2. Fat bag of coins: 100 Gold Coins
+3. Gem encrusted treasure chest:
+  2215 Copper Coins
+  800 Silver Coins
+  80 Gold Coins
+  Gems 70 GP
+
+Area 10, Stormy Cavern
+Monster: Xorn, CR 1
+Abilities:
+  STR 14 (+2)
+  DEX 11 (0)
+  INT 14 (+2)
+  WIS 10 (0)
+  CHA 12 (+1)
+  CON 16 (+3)
+Hit Points: 80
+Armor Class: 12
+Attack Bonus: 4
+Basic Attack: 1d6 + 2 lightning
+Save DC: 13
+XP Value: 200
+Treasure: 8 Gold Coins
+
+Dungeon: Manor of the Misty Graves
+
+Dungeon Entrance
+Dimensions: rectangle, 72 x 33 hands
+Details: This room appears empty except for a thick coat of dust on the floor.
+Minion Group: Sasquatch, CR 1/4
+Number Appearing: 4
+Abilities:
+  STR 11 (0)
+  DEX 10 (0)
+  INT 12 (+1)
+  WIS 16 (+3)
+  CHA 14 (+2)
+  CON 16 (+3)
+Hit Points: 9 each
+Armor Class: 12
+Attack Bonus: 3
+Attack Damage: 4x (1d4 + 2 necrotic)
+Save DC: 13
+XP Value: 50
+
+Heavy Wooden Door, bared from this side, south tunnel to the next room.
+
+Room 2, Shrine of Fortuna
+Dimensions: hexagon, 12 hands across
+Details: This room appears empty except for a thick coat of dust on the floor.
+Monster: Demon Cat, CR 2
+Abilities:
+  STR 10 (0)
+  DEX 14 (+2)
+  INT 7 (-2)
+  WIS 14 (+2)
+  CHA 11 (0)
+  CON 10 (0)
+Hit Points: 93
+Armor Class: 14
+Attack Bonus: 2
+Basic Attack: 1d6 + 2 frost
+Save DC: 13
+XP Value: 450
+Treasure:
+  1500 Copper Coins
+  1400 Silver Coins
+  47 Gold Coins
+  Jewels 150 GP
+
+Heavy Wooden Door, closed and locked, north tunnel to the next room.
+
+Room 3, Bestiary
+Dimensions: rectangle, 24 x 33 hands
+Details: Murky green water, three hands deep, covers the floor in this room and the one beyond.
+Monster Group: Ghoul, CR 2
+Number Appearing: 3
+Abilities:
+  STR 10 (0)
+  DEX 15 (+2)
+  INT 18 (+4)
+  WIS 16 (+3)
+  CHA 9 (-1)
+  CON 12 (+1)
+Hit Points: 29 each
+Armor Class: 13
+Attack Bonus: 3
+Attack Damage: 3x (1d6 + 2 lightning)
+Save DC: 13
+XP Value: 450
+Treasure:
+  13 Silver Coins
+  11 Electrum Coins
+  11 Gold Coins
+
+Studded Wooden Door, closed but unlocked, west hallway to the next room.
+
+Room 4, Horse Stable
+Dimensions: rectangle, 60 x 21 hands
+Details: This room appears empty except for a thick coat of dust on the floor.
+Monster: Umber Hulk, CR 2
+Abilities:
+  STR 11 (0)
+  DEX 11 (0)
+  INT 10 (0)
+  WIS 15 (+2)
+  CHA 14 (+2)
+  CON 7 (-2)
+Hit Points: 90
+Armor Class: 12
+Attack Bonus: 4
+Basic Attack: 1d6 + 2 bludgeoning
+Save DC: 13
+XP Value: 450
+Treasure: 22 Copper Coins
+
+Gold Inlaid Wooden Door, bared from the other side, wooden stairway to the next room.
+
+Room 5, Combat Pit Arena
+Dimensions: rectangle, 24 x 69 hands
+Details: This room has a large 'x' painted on the floor in black tar.
+Monster: Gelatinous Sphere, CR 2
+Abilities:
+  STR 11 (0)
+  DEX 17 (+3)
+  INT 7 (-2)
+  WIS 13 (+1)
+  CHA 14 (+2)
+  CON 14 (+2)
+Hit Points: 97
+Armor Class: 14
+Attack Bonus: 2
+Basic Attack: 1d6 + 2 crushing
+Save DC: 13
+XP Value: 450
+Treasure:
+  2000 Copper Coins
+  1415 Silver Coins
+  80 Gold Coins
+  Gems 75 GP
+  Amulet of proof against detection and location
+  Boots of the winterlands
+  Circlet of blasting
+
+Bronze Portcullis, bared from the other side, south hallway to the next room.
+
+Room 6, Desecrated Chapel
+Dimensions: hexagon, 48 hands across
+Details: The walls of this room are covered in highly advanced mathematical formulae.
+Monster: Lycanthrope: Werepanther, CR 2
+Abilities:
+  STR 14 (+2)
+  DEX 14 (+2)
+  INT 13 (+1)
+  WIS 9 (-1)
+  CHA 15 (+2)
+  CON 12 (+1)
+Hit Points: 92
+Armor Class: 12
+Attack Bonus: 4
+Basic Attack: 1d6 + 2 divine force
+Save DC: 13
+XP Value: 450
+Treasure: 19 Copper Coins
+
+Ornate Iron Gate, open and unlocked, wooden stairway to the next room.
+
+Room 7, Mythical Beast Stable
+Dimensions: square, 72 hands across
+Details: Empty coffins line the walls of this room.
+Monster: Owlbear, CR 2
+Abilities:
+  STR 8 (-1)
+  DEX 12 (+1)
+  INT 16 (+3)
+  WIS 11 (0)
+  CHA 13 (+1)
+  CON 8 (-1)
+Hit Points: 86
+Armor Class: 12
+Attack Bonus: 4
+Basic Attack: 1d6 + 2 slashing
+Save DC: 13
+XP Value: 450
+Treasure: 9 Gold Coins
+
+Wooden Door, closed but unlocked, east tunnel to the next room.
+
+Room 8, Hot Spring Bath
+Dimensions: square, 48 hands across
+Details: The walls of this room are covered in highly advanced mathematical formulae.
+Monster Group: Worg, CR 2
+Number Appearing: 3
+Abilities:
+  STR 12 (+1)
+  DEX 14 (+2)
+  INT 11 (0)
+  WIS 14 (+2)
+  CHA 10 (0)
+  CON 9 (-1)
+Hit Points: 33 each
+Armor Class: 13
+Attack Bonus: 3
+Attack Damage: 3x (1d6 + 2 fire)
+Save DC: 13
+XP Value: 450
+Treasure:
+  23 Electrum Coins
+  12 Gold Coins
+
+Studded Wooden Door, closed and locked, north hallway to the next room.
+
+Room 9, Haunted Auditorium
+Dimensions: rectangle, 24 x 33 hands
+Details: Garbage litters the floor of this room.
+Monster: Vampire, Dragonborn, CR 2
+Abilities:
+  STR 17 (+3)
+  DEX 8 (-1)
+  INT 10 (0)
+  WIS 14 (+2)
+  CHA 15 (+2)
+  CON 17 (+3)
+Hit Points: 100
+Armor Class: 14
+Attack Bonus: 2
+Basic Attack: 1d6 + 2 necrotic
+Save DC: 13
+XP Value: 450
+Treasure:
+  1700 Copper Coins
+  900 Silver Coins
+  81 Gold Coins
+  Gems 400 GP
+
+Heavy Wooden Door, closed and locked, south western hallway to the next room.
+
+Room 10, Dungeon Heart
+Dimensions: circular, 80 hands across
+Details: This room is under construction, woodworking tools are scattered about.
+Boss: Beholder, CR 4
+Abilities:
+  STR 20 (+5)
+  DEX 22 (+6)
+  INT 16 (+3)
+  WIS 21 (+5)
+  CHA 15 (+2)
+  CON 16 (+3)
+Hit Points: 127
+Armor Class: 13
+Attack Bonus: 6
+Number of Attacks: 4 basic attacks or 1 special per turn.
+Basic Attack: 1d10 + 2 lightning
+Special Attack: 1d6 + 26 piercing
+Special Ability: Oracle of War. The villain fights with an unnatural defensive advantage.
+Legendary Action. The boss may use one basic attack or move action at the end of every opponent's turn.
+Save DC: 14
+XP Value: 1100
+Treasure:
+  1800 Copper Coins
+  1000 Silver Coins
+  76 Gold Coins
+  Mariner's armor
+  Pearl of power
+  Pipes of the sewers
+  Potion of greater healing
+  Potion of resistance
+  Spell scroll (2nd level) Nystul's Magic Aura
+
+Dungeon Exit: Solid Gold Gateway, open and unlocked, yellow inlaid tile stairway leads out of the dungeon.
+
+Campaign Boss: The Nameless One, CR 5
+Abilities:
+  STR 15 (+2)
+  DEX 21 (+5)
+  INT 20 (+5)
+  WIS 24 (+7)
+  CHA 12 (+1)
+  CON 14 (+2)
+Hit Points: 143
+Armor Class: 15
+Attack Bonus: 5
+Number of Attacks: 5 basic attacks or 1 special per turn.
+Basic Attack: 1d10 + 3 necrotic
+Special Attack: 1d6 + 32 holy light
+Special Ability: Necromancy. The villain will attempt to raise undead champions to fight the party.
+Legendary Action. The boss may use one basic attack or move action at the end of every opponent's turn.
+Save DC: 15
+XP Value: 1800
+Treasure:
+  2200 Copper Coins
+  9000 Silver Coins
+  30 Electrum Coins
+  2200 Gold Coins
+  80 Platinum Coins
+  Gems 350 GP
+  Potion of climbing
+  Potion of greater healing
+  Potion of healing
