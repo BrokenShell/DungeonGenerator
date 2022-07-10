@@ -1,6 +1,6 @@
 # Dungeon Generator Beta
 
-## 100 Room Dungeon
+## Random Dungeon
 ```python
 from DungeonGenerator import Dungeon
 
