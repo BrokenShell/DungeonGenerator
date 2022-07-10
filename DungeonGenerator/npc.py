@@ -188,7 +188,7 @@ class ShopKeeper(Npc):
             self.for_sale.extend([BasicGear(cr - 4) for _ in range(d(4))])
             self.for_sale.extend([BasicGear(cr) for _ in range(dice(2, 4))])
         self.trinket_price = f"{BasicGear(5).price}"
-        self.for_sale_names = [f"  {val.name} ({val.id})" for val in self.for_sale]
+        self.for_sale_names = [f"{val.name} ({val.id})" for val in self.for_sale]
 
     def __str__(self):
         self.output = (
@@ -198,9 +198,8 @@ class ShopKeeper(Npc):
             f"Mannerism: {self.mannerism}",
             f"Bond: {self.background.bond}",
             f"Inspect Merchandise INT: DC {self.save_dc}",
-            f"For Sale:",
-            "\n".join(self.for_sale_names),
-            f"  Trinket: {self.trinket}, Price {self.trinket_price}",
+            f"For Sale: " + "; ".join(self.for_sale_names) +
+            f"; Trinket: {self.trinket}, Price {self.trinket_price}",
             ""
         )
         return "\n".join(self.output)
@@ -210,7 +209,7 @@ class PotionDealer(Npc):
     def __init__(self, cr, race=None):
         super().__init__(cr, race)
         self.profession = 'Potion Dealer'
-        self.for_sale = sorted([f"  {Potion(cr)}" for _ in range(dice(3, 4))])
+        self.for_sale = sorted([f"{Potion(cr)}" for _ in range(dice(3, 4))])
 
     def __str__(self):
         self.output = (
@@ -220,8 +219,7 @@ class PotionDealer(Npc):
             f"Mannerism: {self.mannerism}",
             f"Bond: {self.background.bond}",
             f"Inspect Merchandise INT: DC {self.save_dc}",
-            f"For Sale:",
-            "\n".join(self.for_sale),
+            f"For Sale: " + "; ".join(self.for_sale),
             ""
         )
         return "\n".join(self.output)
@@ -456,19 +454,5 @@ random_npc = RelativeWeightedChoice((
 ))
 
 if __name__ == "__main__":
-    print("""
-A Random Collection of 1000 NPCs
-
-""")
-    print("Tier 1 (level 1 - 5)")
-    for _ in range(250):
-        print(random_npc(distribution_range(front_linear, 1, 5)))
-    print("Tier 2 (level 6 - 10)")
-    for _ in range(250):
-        print(random_npc(distribution_range(front_linear, 6, 10)))
-    print("Tier 3 (level 11 - 16)")
-    for _ in range(250):
-        print(random_npc(distribution_range(front_linear, 11, 16)))
-    print("Tier 4 (level 17 - 20)")
-    for _ in range(250):
-        print(random_npc(distribution_range(front_linear, 17, 20)))
+    print(PotionDealer(1))
+    print(ShopKeeper(1))

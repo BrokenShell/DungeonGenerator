@@ -90,7 +90,7 @@ class Loot:
                 output.append(itm)
         if len(output) == 0:
             output = ['Empty']
-        return '\n  ' + "\n  ".join(output) if len(output) > 1 else output[0]
+        return ', '.join(output)
 
     def set_loot(self, loot_data):
         loot = cumulative_weighted_choice(loot_data)
@@ -824,4 +824,4 @@ def no_coin(loot: Loot) -> Loot:
 
 if __name__ == '__main__':
     print()
-    print(RankOneHoardLoot())
+    print(RankFourHoardLoot())

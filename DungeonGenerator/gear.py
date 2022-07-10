@@ -125,3 +125,7 @@ if __name__ == '__main__':
     for _ in range(10):
         p = Potion(1)
         print(f"{p}")
+    print()
+    for _ in range(10):
+        gear = random_gear(10, identify=True)
+        print(gear)

@@ -184,4 +184,4 @@ armor_bonus_gear = {
 
 
 if __name__ == "__main__":
-    print(basic_gear.cat_keys)
+    print(basic_gear())

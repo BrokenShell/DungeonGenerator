@@ -101,7 +101,7 @@ class Dungeon(Area):
                     elif room_number % self.rooms_per_level == 1:
                         my_room = MinionRoom(dun_level + self.cr.value)
                     elif room_number < self.total_rooms:
-                        my_room = Room(dun_level + self.cr.value, make_traps=False)
+                        my_room = Room(dun_level + self.cr.value, make_traps=make_traps)
                 else:
                     break
                 self.rooms.append(f'Room {room_number}, {my_room}')
@@ -545,7 +545,10 @@ def make_campaign(starting_level=1):
         Settlement(starting_level),
         Wilderness(starting_level),
         Dungeon(starting_level+1),
-        CampaignBoss(starting_level+4),
+        Wilderness(starting_level+2),
+        Dungeon(starting_level+3),
+        Wilderness(starting_level+4),
+        CampaignBoss(starting_level+5),
     )
     return adventure
 
@@ -553,8 +556,11 @@ def make_campaign(starting_level=1):
 if __name__ == "__main__":
     print("\nPre-rolled party:\n")
     print(Party())
-    campaign = make_campaign()
+    campaign = make_campaign(1)
     print("\nCampaign\n")
     print(campaign)
     print("\nCampaign Summary\n")
     print(campaign.summary())
+    # campaign = make_clichea()
+    # print(campaign.summary(), end="\n\n")
+    # print(campaign)
