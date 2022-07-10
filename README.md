@@ -4,7 +4,6 @@
 ```python
 from DungeonGenerator import Dungeon
 
-
 dungeon = Dungeon(cr=1, dungeon_levels=3, rooms_per_level=5)
 print(dungeon)
 ```
